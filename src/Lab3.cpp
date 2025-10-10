@@ -17,7 +17,7 @@ unsigned int getUInt() {
 
 	while (!(cin >> i)) {
 		cin.clear();
-		cout << "Кнопки для ввода чисел находятся в другом месте." << endl;
+		cout << "Осторожнее со вводом." << endl;
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
 
