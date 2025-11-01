@@ -2,13 +2,12 @@
 #include <csignal>
 #include <string>
 #include "note.h"
-constexpr auto TIME_MAX = 86400;
 
 namespace note {
 
 	void input_clear() {
 		std::cin.clear();
-		std::cout << "Никак не надоест ломать меня, да?" << std::endl;
+		std::cout << "Неверный ввод." << std::endl;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
@@ -27,8 +26,6 @@ namespace note {
 			input_clear();
 		}
 
-		if (i < 0) return 0;
-		if (i > TIME_MAX) return TIME_MAX;
 		return i;
 	}
 
@@ -37,14 +34,20 @@ namespace note {
 		return note2;
 	}
 
-	MusicNote *setPitch(MusicNote *note, int pitch) {
-		note->pitch = pitch;
-		return note;
+	void setPitch(MusicNote *note, int pitch) {
+		if (note != nullptr) note->pitch = pitch;
 	}
 
-	MusicNote *setVolume(MusicNote *note, int volume) {
-		note->volume = volume;
-		return note;
+	void setDuration(MusicNote* note, int duration) {
+		if (note != nullptr) note->duration = duration;
+	}
+
+	void setVolume(MusicNote *note, int volume) {
+		if (note != nullptr) note->volume = volume;
+	}
+
+	void deleteNote(MusicNote* note) {
+		if (note!=nullptr) delete note;
 	}
 
 	void MusicNote::display() {

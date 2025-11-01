@@ -9,14 +9,16 @@ namespace note {
 
 	struct MusicNote {
 		int pitch; int duration; int volume;
-		struct MusicNote(int p, int d, int v) : pitch(p), duration(d), volume(v) {}
+		MusicNote(int p, int d, int v) : pitch(p), duration(d), volume(v) {}
+		~MusicNote() {}
 		void display();
 	};
 
 	MusicNote *cmpPitch(MusicNote *note1, MusicNote *note2);
-	MusicNote *setPitch(MusicNote *note, int pitch);
-	MusicNote *setVolume(MusicNote *note, int volume);
-
+	void setPitch(MusicNote *note, int pitch);
+	void setDuration(MusicNote *note, int duration);
+	void setVolume(MusicNote *note, int volume);
+	void deleteNote(MusicNote *note);
 }
 
 #endif
